@@ -2,6 +2,8 @@
 import axios from "axios";
 import { ref } from "vue";
 
+const apiHost = "http://localhost:5001";
+
 export default {
   setup() {
     const prompt = ref("");
@@ -12,7 +14,7 @@ export default {
       response.value = null;
       isLoadResponse.value = true;
       try {
-        const res = await axios.post("http://localhost:5001/api/generate", {
+        const res = await axios.post(`${apiHost}/api/generate`, {
           prompt: prompt.value,
         });
         response.value = res.data.response;
@@ -34,11 +36,13 @@ export default {
 
 <template>
   <div class="grid gap-y-6 max-w-screen-md">
-    <h1 class="text-gray-700 font-semibold">AI Children Story Generator</h1>
+    <h1 class="text-gray-700 font-semibold text-4xl">
+      Dreamland Tales: The Magical AI Storyteller for Bedtime Adventures!
+    </h1>
     <textarea
       v-model="prompt"
       placeholder="Enter the theme here (e.g., about... Superman who likes burgers)"
-      class="w-full h-40 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-700 placeholder-gray-400"
+      class="w-full h-40 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-700 placeholder-gray-400 dark:bg-white"
     ></textarea>
     <div>
       <button
