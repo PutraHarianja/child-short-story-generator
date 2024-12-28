@@ -1,24 +1,33 @@
 <script>
 import axios from "axios";
+import { ref } from "vue";
 
 export default {
-  data() {
-    return {
-      prompt: "",
-      response: null,
-    };
-  },
-  methods: {
-    async generateContent() {
+  setup() {
+    const prompt = ref("");
+    const response = ref(null);
+    const isLoadResponse = ref(false);
+
+    const generateContent = async () => {
+      response.value = null;
+      isLoadResponse.value = true;
       try {
         const res = await axios.post("http://localhost:5001/api/generate", {
-          prompt: this.prompt,
+          prompt: prompt.value,
         });
-        this.response = res.data.response;
+        response.value = res.data.response;
       } catch (error) {
         console.error("Error generating content:", error);
       }
-    },
+      isLoadResponse.value = false;
+    };
+
+    return {
+      prompt,
+      response,
+      generateContent,
+      isLoadResponse,
+    };
   },
 };
 </script>
@@ -38,6 +47,15 @@ export default {
       >
         Generate
       </button>
+    </div>
+    <div v-if="isLoadResponse">
+      <span>
+        <img
+          class="aspect-square h-48 m-auto"
+          src="../assets/rotate-loading-no-bg.gif"
+          alt="Loading GIF"
+        />
+      </span>
     </div>
     <div v-if="response">
       <span
