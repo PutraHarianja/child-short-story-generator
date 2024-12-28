@@ -37,7 +37,7 @@ export default {
     <h1 class="text-gray-700 font-semibold">AI Children Story Generator</h1>
     <textarea
       v-model="prompt"
-      placeholder="Enter the theme here...(about...)"
+      placeholder="Enter the theme here (e.g., about... Superman who likes burgers)"
       class="w-full h-40 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-700 placeholder-gray-400"
     ></textarea>
     <div>
