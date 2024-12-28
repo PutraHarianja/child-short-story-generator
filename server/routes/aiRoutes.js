@@ -3,9 +3,10 @@ const router = express.Router()
 const genAI = require('../config/googleAI')
 
 router.post('/generate', async (req, res) => {
+    console.log('req', req)
     const { prompt } = req.body
 
-    const finalPrompt = `Write a short story for children, ${prompt}. Please return the story using HTML tags for headings and paragraphs, but exclude the <!DOCTYPE>, <html>, <head>, and <body> tags and also exclude this (\```html). The output should be formatted so that it can be directly inserted into a <span v-html="response"></span> element on the client side so the tag it used should be only <h1> and <p>`
+    const finalPrompt = `Write a short story for children, ${prompt}. Please return the story using HTML tags for headings and paragraphs, but exclude the <!DOCTYPE>, <html>, <head>, and <body> tags and also EXCLUDE the triple backtick html type tag in the front. The output should be formatted so that it can be directly inserted into a <span v-html="response"></span> element on the client side so the tag it used should be only <h1> and <p>`
 
     try {
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
