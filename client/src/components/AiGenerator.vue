@@ -24,16 +24,20 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="grid gap-y-6">
     <h1>AI Story For Children Generator</h1>
     <textarea
-      cols="80"
-      rows="5"
       v-model="prompt"
       placeholder="Enter the theme here..."
+      class="w-full h-28 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-700 placeholder-gray-400"
     ></textarea>
     <div>
-      <button @click="generateContent">Generate</button>
+      <button
+        class="text-white p-2 w-1/2 bg-indigo-500"
+        @click="generateContent"
+      >
+        Generate
+      </button>
     </div>
     <div v-if="response">
       <h2>Generated Content:</h2>
