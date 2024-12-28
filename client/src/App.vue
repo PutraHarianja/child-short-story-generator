@@ -1,6 +1,6 @@
 <template>
   <div class="app_background"></div>
-  <div>
+  <div class="app_main">
     <AiGenerator />
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
 </script>
 
 <style>
+.app_main {
+  padding: 0 1rem;
+}
 .app_background {
   background-image: url("./assets/christmas-vertical-background-design.jpg");
   background-position: 50% 50%;

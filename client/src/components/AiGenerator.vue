@@ -52,7 +52,7 @@ export default {
       <span>
         <img
           class="aspect-square h-48 m-auto"
-          src="../assets/rotate-loading-no-bg.gif"
+          src="../assets/rotate.gif"
           alt="Loading GIF"
         />
       </span>
